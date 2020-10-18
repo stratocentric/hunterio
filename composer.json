@@ -1,5 +1,5 @@
 {
-    "name": "messerli90/hunterio",
+    "name": "argia-andreas/hunterio",
     "description": "Laravel wrapper to discover email addresses throgh the Hunter.io API",
     "keywords": [
         "messerli90",
@@ -52,6 +52,9 @@
             "aliases": {
                 "Hunter": "Messerli90\\Hunterio\\Facades\\Hunter",
                 "DomainSearch": "Messerli90\\Hunterio\\Facades\\DomainSearch",
+                "Campaigns": "Messerli90\\Hunterio\\Facades\\Campaigns",
+                "Leads": "Messerli90\\Hunterio\\Facades\\Leads",
+                "LeadsLists": "Messerli90\\Hunterio\\Facades\\LeadsLists",
                 "EmailFinder": "Messerli90\\Hunterio\\Facades\\EmailFinder",
                 "EmailCount": "Messerli90\\Hunterio\\Facades\\EmailCount",
                 "EmailVerifier": "Messerli90\\Hunterio\\Facades\\EmailVerifier"

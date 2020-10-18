@@ -14,6 +14,8 @@ class HunterClient implements EndpointInterface
     /** @var string */
     protected $api_key;
 
+    protected $body;
+
     /** @var string */
     protected $base_url = "https://api.hunter.io/v2";
 
@@ -52,9 +54,19 @@ class HunterClient implements EndpointInterface
         });
     }
 
-    protected function buildUrl()
+    public function body()
     {
-        return "{$this->base_url}/{$this->endpoint}";
+
+        return $this->body;
+    }
+
+    protected function buildUrl($query_params = true)
+    {
+        if ($query_params) {
+            return "{$this->base_url}/{$this->endpoint}";
+        } else {
+            return "{$this->base_url}/{$this->endpoint}?api_key=" . $this->api_key;
+        }
     }
 
     public function get()
@@ -62,6 +74,40 @@ class HunterClient implements EndpointInterface
         $response = Http::get($this->buildUrl(), $this->make());
 
         if ($response->ok()) {
+            return $response->json();
+        } else {
+            return $this->handleErrors($response);
+        }
+    }
+
+    public function create(string $name = null)
+    {
+        $response = Http::post($this->buildUrl(false), $this->body());
+        if ($response->status() === 201) {
+            return $response->json();
+        } else {
+            return $this->handleErrors($response);
+        }
+    }
+
+    public function update(string $name = null)
+    {
+        $response = Http::put($this->buildUrl(false), $this->body());
+
+        if ($response->status() === 204) {
+            return $response->json();
+        } else {
+            return $this->handleErrors($response);
+        }
+    }
+
+    public function delete()
+    {
+        $this->limit = null;
+        $this->offset = null;
+        $response = Http::delete($this->buildUrl(), $this->make());
+
+        if ($response->status() === 204) {
             return $response->json();
         } else {
             return $this->handleErrors($response);

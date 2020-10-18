@@ -1,15 +1,10 @@
 # Hunter.io
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/messerli90/hunterio.svg?style=flat-square)](https://packagist.org/packages/messerli90/hunterio)
-[![Build Status](https://img.shields.io/travis/messerli90/hunterio/main.svg?style=flat-square)](https://travis-ci.org/messerli90/hunterio)
-[![Quality Score](https://img.shields.io/scrutinizer/g/messerli90/hunterio.svg?style=flat-square)](https://scrutinizer-ci.com/g/messerli90/hunterio)
-[![Total Downloads](https://img.shields.io/packagist/dt/messerli90/hunterio.svg?style=flat-square)](https://packagist.org/packages/messerli90/hunterio)
-
 Using this package you can easily query the [Hunter.io](https://hunter.io/) API.
 
 Here are some examples of the provided methods:
 
-```php
+``` php
 use Hunter;
 
 // Retrieve email addresses at a given domain
@@ -28,7 +23,7 @@ Hunter::emailFinder()->company('Ghost')->name('John Doe')->get();
 
 You can install the package via composer:
 
-```bash
+``` bash
 composer require messerli90/hunterio
 ```
 
@@ -36,13 +31,13 @@ You'll need an [API key](https://hunter.io/api) from Hunter.io
 
 Optionally, you can publish the config file of this package with this command:
 
-```bash
+``` bash
 php artisan vendor:publish --provider="Messerli90\Hunterio\HunterServiceProvider"
 ```
 
 or, manually add it to your `config/services.php` file
 
-```php
+``` php
 [
     ...
     'hunter' => [
@@ -59,7 +54,7 @@ Read the [Hunter.io API Documentation](https://hunter.io/api-documentation/v2) t
 
 Search all the email addresses corresponding to one website.
 
-```php
+``` php
 // Shortcut to search by domain
 Hunter::domainSearch('ghost.org')
 
@@ -78,7 +73,7 @@ $query = Hunter::domainSearch()->company('Ghost')->domain('ghost.org')
 
 This API endpoint generates or retrieves the most likely email address from a domain name, a first name and a last name.
 
-```php
+``` php
 // Shortcut assumes searching by domain
 Hunter::emailFinder('ghost.org')->name('John', 'Doe')->get();
 
@@ -95,7 +90,7 @@ This API endpoint allows you to know how many email addresses we have for one do
 
 > This endpoint is public does not require an API key
 
-```php
+``` php
 // Passing argument assumes searching by domain
 Hunter::emailCount('ghost.org');
 
@@ -110,7 +105,7 @@ Hunter::emailCount()->domain('ghost.org')->type('personal')->get();
 
 This API endpoint allows you to verify the deliverability of an email address.
 
-```php
+``` php
 Hunter::verifyEmail('steli@close.io');
 ```
 
@@ -118,7 +113,7 @@ Hunter::verifyEmail('steli@close.io');
 
 This API endpoint enables you to get information regarding your Hunter account at any time.
 
-```php
+``` php
 Hunter::account();
 ```
 
@@ -126,19 +121,19 @@ Hunter::account();
 
 ### Testing
 
-```bash
+``` bash
 ./vendor/bin/phpunit
 ```
 
 ### Roadmap
 
--   [x] Domain Search
--   [x] Email Finder
--   [x] Email Verifier
--   [x] Email Count
--   [x] Account Information
--   [ ] Leads
--   [ ] Leads List
+*   [x] Domain Search
+*   [x] Email Finder
+*   [x] Email Verifier
+*   [x] Email Count
+*   [x] Account Information
+*   [ ] Leads
+*   [ ] Leads List
 
 ### Changelog
 
@@ -154,8 +149,8 @@ If you discover any security related issues, please tweet me at @michaelmesserli
 
 ## Credits
 
--   [Michael Messerli](https://github.com/messerli90)
--   [All Contributors](../../contributors)
+*   [Michael Messerli](https://github.com/messerli90)
+*   [All Contributors](../../contributors)
 
 ## License
 

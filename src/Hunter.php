@@ -37,6 +37,30 @@ class Hunter extends HunterClient
         return (new EmailFinder($this->api_key))->domain($domain);
     }
 
+    public function leadsLists($list_id = null)
+    {
+        if (!$list_id) {
+            return new LeadsLists($this->api_key);
+        }
+        return (new LeadsLists($this->api_key))->list($list_id)->get();
+    }
+
+    public function leads($lead_id = null)
+    {
+        if (!$lead_id) {
+            return new Leads($this->api_key);
+        }
+        return (new Leads($this->api_key))->lead($lead_id)->get();
+    }
+
+    public function campaigns($id = null)
+    {
+        if (!$id) {
+            return new Campaigns($this->api_key);
+        }
+        return (new Campaigns($this->api_key))->campaign($id);
+    }
+
     /**
      * @deprecated v1.1.0
      */
